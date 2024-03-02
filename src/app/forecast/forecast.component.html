@@ -5,7 +5,7 @@
         <div>{{weather?.weather[0].description}}</div>
     </div>
     <div class="display-flex">
-    <div>{{(9/5) * (weather?.main.temp-273) + 32 | number}}</div>
+    <div>{{(9/5) * (weather?.main.temp-273) + 32 | number: '2.0-0'}}&deg;</div>
     </div>
 
     
