@@ -38,8 +38,6 @@ async getWeatherForCity(city: string) {
     return acc;
   }, []);
   this.next5Days.splice(0, 1);
-
-  console.log(this.next5Days);
   this.lastUpdatedOn = new Date();
 }
 
