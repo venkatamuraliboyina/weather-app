@@ -1,23 +1,61 @@
 <main>
   <header class="app-header">Simple Weather</header>
-  
+
   <mat-tab-group (selectedTabChange)="handleTabChange($event)">
     <mat-tab label="Rio de Janeiro">
-      <div class="display-flex">
-        <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+      <div class="app-bg">
+        <div class="app-card">
+          <h3 class="heading"> Next hours</h3>
+          <div class="display-flex">
+            <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+          </div>
+        </div>
+        <div class="app-card">
+          <div *ngIf="next5Days">
+            <h3 class="heading">Next 5 Days</h3>
+            <app-forecast *ngFor="let day of next5Days" [weather]="day"></app-forecast>
+          </div>
+        </div>
       </div>
     </mat-tab>
     <mat-tab label="Beijing">
-      <div class="display-flex">
-      <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+      <div class="app-bg">
+        <div class="app-card">
+          <h3 class="heading"> Next hours</h3>
+          <div class="display-flex">
+            <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3 class="heading">Next 5 Days</h3>
+          <div *ngIf="next5Days">
+            <app-forecast *ngFor="let day of next5Days" [weather]="day"></app-forecast>
+          </div>
+        </div>
       </div>
+
     </mat-tab>
-    <mat-tab label="Los Angeles"> 
-      <div class="display-flex">
-      <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+    <mat-tab label="Los Angeles">
+      <div class="app-bg">
+        <div class="app-card">
+          <h3 class="heading"> Next hours</h3>
+          <div class="display-flex">
+            <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+          </div>
+        </div>
+        <div class="app-card">
+          <h3 class="heading">Next 5 Days</h3>
+          <div *ngIf="next5Days">
+            <app-forecast *ngFor="let day of next5Days" [weather]="day"></app-forecast>
+          </div>
+        </div>
       </div>
-     </mat-tab>
+
+    </mat-tab>
   </mat-tab-group>
 </main>
+<footer class="footer">
+  <div>Last Updated on {{lastUpdatedOn | date :'LLL dd h:mm a'}}</div>
+</footer>
 
 <router-outlet />
