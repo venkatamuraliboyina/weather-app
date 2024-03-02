@@ -1,6 +1,23 @@
 <main>
-  <header>Simple Weather</header>
-  <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+  <header class="app-header">Simple Weather</header>
+  
+  <mat-tab-group (selectedTabChange)="handleTabChange($event)">
+    <mat-tab label="Rio de Janeiro">
+      <div class="display-flex">
+        <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+      </div>
+    </mat-tab>
+    <mat-tab label="Beijing">
+      <div class="display-flex">
+      <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+      </div>
+    </mat-tab>
+    <mat-tab label="Los Angeles"> 
+      <div class="display-flex">
+      <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+      </div>
+     </mat-tab>
+  </mat-tab-group>
 </main>
 
 <router-outlet />
