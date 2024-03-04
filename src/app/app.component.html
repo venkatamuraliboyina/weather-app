@@ -1,16 +1,24 @@
 <main>
-  <header class="app-header">Simple Weather</header>
-
-  <mat-tab-group (selectedTabChange)="handleTabChange($event)">
+  <header class="app-header">
+    <b>Simple Weather</b>
+    <span *ngIf="!isSearchVisible" class="search-icon" (click)="toggleSearch()">
+      <i class="fas fa-search"></i>
+    </span>
+  </header>
+  <div *ngIf="isSearchVisible" class="search-container">
+    <input class="search-input" type="text" placeholder="Search" [(ngModel)]="searchValue" />
+    <button class="submit-button" (click)="submitSearch()">Submit</button>
+  </div>
+  <mat-tab-group *ngIf="!searched" (selectedTabChange)="handleTabChange($event)">
     <mat-tab label="Rio de Janeiro">
       <div class="app-bg">
         <div class="app-card">
-          <h3 class="heading"> Next hours</h3>
+          <h3 class="heading">Next hours</h3>
           <div class="display-flex">
             <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
           </div>
         </div>
-        <div class="app-card">
+        <div class="app-card margin-bottom">
           <div *ngIf="next5Days">
             <h3 class="heading">Next 5 Days</h3>
             <app-forecast *ngFor="let day of next5Days" [weather]="day"></app-forecast>
@@ -21,12 +29,12 @@
     <mat-tab label="Beijing">
       <div class="app-bg">
         <div class="app-card">
-          <h3 class="heading"> Next hours</h3>
+          <h3 class="heading">Next hours</h3>
           <div class="display-flex">
             <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
           </div>
         </div>
-        <div class="app-card">
+        <div class="app-card margin-bottom">
           <h3 class="heading">Next 5 Days</h3>
           <div *ngIf="next5Days">
             <app-forecast *ngFor="let day of next5Days" [weather]="day"></app-forecast>
@@ -38,12 +46,12 @@
     <mat-tab label="Los Angeles">
       <div class="app-bg">
         <div class="app-card">
-          <h3 class="heading"> Next hours</h3>
+          <h3 class="heading">Next hours</h3>
           <div class="display-flex">
             <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
           </div>
         </div>
-        <div class="app-card">
+        <div class="app-card margin-bottom">
           <h3 class="heading">Next 5 Days</h3>
           <div *ngIf="next5Days">
             <app-forecast *ngFor="let day of next5Days" [weather]="day"></app-forecast>
@@ -53,6 +61,20 @@
 
     </mat-tab>
   </mat-tab-group>
+  <div class="app-bg" *ngIf="searched">
+    <div class="app-card">
+      <h3 class="heading">Next hours</h3>
+      <div class="display-flex">
+        <app-weather *ngFor="let w of weatherList" [weather]="w"></app-weather>
+      </div>
+    </div>
+    <div class="app-card margin-bottom">
+      <h3 class="heading">Next 5 Days</h3>
+      <div *ngIf="next5Days">
+        <app-forecast *ngFor="let day of next5Days" [weather]="day"></app-forecast>
+      </div>
+    </div>
+  </div>
 </main>
 <footer class="footer">
   <div>Last Updated on {{lastUpdatedOn | date :'LLL dd h:mm a'}}</div>

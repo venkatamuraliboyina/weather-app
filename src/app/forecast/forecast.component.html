@@ -1,12 +1,12 @@
 <div class="forecast-weather" *ngIf="weather">
-    <img src="https://openweathermap.org/img/wn/{{weather?.weather[0].icon}}@2x.png" alt={{weather?.weather[0].description}} />
+    <img src="https://openweathermap.org/img/wn/{{weather?.most_occuring_weather.weather_icon}}@2x.png"
+        alt={{weather?.most_occuring_weather.weather_status}} />
     <div>
-       <div>{{weather?.dt_txt | date : 'EEE, MMM d'}}</div>
-        <div>{{weather?.weather[0].description}}</div>
+        <div>{{weather?.dt_txt | date : 'EEE, MMM d'}}</div>
+        <div>{{weather?.most_occuring_weather.weather_status}}</div>
     </div>
     <div class="display-flex">
-    <div>{{(9/5) * (weather?.main.temp-273) + 32 | number: '2.0-0'}}&deg;</div>
+        <div class="temp-max-space">{{(9/5) * (weather?.temp_max-273) + 32 | number: '2.0-0'}}&deg;</div>
+        <div>{{(9/5) * (weather?.temp_min-273) + 32 | number: '2.0-0'}}&deg;</div>
     </div>
-
-    
 </div>

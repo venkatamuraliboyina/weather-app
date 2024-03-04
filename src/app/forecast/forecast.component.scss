@@ -1,11 +1,15 @@
 .forecast-weather {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 8px;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  border-bottom: 1px solid #ddd;
 }
 
 .display-flex {
-    display: flex;
+  display: flex;
+}
+
+.temp-max-space {
+  margin-right: 10px;
 }

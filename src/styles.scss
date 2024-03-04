@@ -1,15 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@fortawesome/fontawesome-free/css/all.css";
 .app-header {
-    background-color: #42A5F5;
-    padding: 16px;
-    color: #fff;
+  background-color: #42a5f5;
+  padding: 16px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mat-mdc-tab-labels {
-padding: 16px;
+  padding: 16px;
 }
 .mdc-tab--active {
-color: #2196F3;
+  color: #2196f3;
 }
 
-body {margin: 0;}
+body {
+  margin: 0;
+}
